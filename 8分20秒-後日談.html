@@ -1,0 +1,1347 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>NA - 820-後日談</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <style>
+        @font-face {
+            src: url(NA%20-%20%E6%96%87%E5%AD%97%E9%A0%BB%E9%81%93%20-%20820-%E5%BE%8C%E6%97%A5%E8%AB%87%20%5B1095088152793841744%5D.html_Files/whitney-300-1FE35.woff);
+            font-family: Whitney;
+            font-weight: 300;
+        }
+
+        @font-face {
+            src: url(NA%20-%20%E6%96%87%E5%AD%97%E9%A0%BB%E9%81%93%20-%20820-%E5%BE%8C%E6%97%A5%E8%AB%87%20%5B1095088152793841744%5D.html_Files/whitney-400-83E7B.woff);
+            font-family: Whitney;
+            font-weight: 400;
+        }
+
+        @font-face {
+            src: url(NA%20-%20%E6%96%87%E5%AD%97%E9%A0%BB%E9%81%93%20-%20820-%E5%BE%8C%E6%97%A5%E8%AB%87%20%5B1095088152793841744%5D.html_Files/whitney-500-47E37.woff);
+            font-family: Whitney;
+            font-weight: 500;
+        }
+
+        @font-face {
+            src: url(NA%20-%20%E6%96%87%E5%AD%97%E9%A0%BB%E9%81%93%20-%20820-%E5%BE%8C%E6%97%A5%E8%AB%87%20%5B1095088152793841744%5D.html_Files/whitney-600-9EC09.woff);
+            font-family: Whitney;
+            font-weight: 600;
+        }
+
+        @font-face {
+            src: url(NA%20-%20%E6%96%87%E5%AD%97%E9%A0%BB%E9%81%93%20-%20820-%E5%BE%8C%E6%97%A5%E8%AB%87%20%5B1095088152793841744%5D.html_Files/whitney-700-A7A71.woff);
+            font-family: Whitney;
+            font-weight: 700;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            background-color: #36393e;
+            color: #dcddde;
+            font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 17px;
+            font-weight: 400;
+        }
+
+        a {
+            color: #00aff4;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        img {
+            object-fit: contain;
+            image-rendering: high-quality;
+            image-rendering: -webkit-optimize-contrast;
+        }
+
+        .preamble {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            max-width: 100%;
+            padding: 1rem;
+        }
+
+        .preamble__guild-icon-container {
+            grid-column: 1;
+        }
+
+        .preamble__guild-icon {
+            max-width: 88px;
+            max-height: 88px;
+        }
+
+        .preamble__entries-container {
+            grid-column: 2;
+            margin-left: 1rem;
+        }
+
+        .preamble__entry {
+            margin-bottom: 0.15rem;
+            color: #ffffff;
+            font-size: 1.4rem;
+        }
+
+        .preamble__entry--small {
+            font-size: 1rem;
+        }
+
+        .chatlog {
+            padding: 1rem 0;
+            width: 100%;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .chatlog__message-group {
+            margin-bottom: 1rem;
+        }
+
+        .chatlog__message-container {
+            background-color: transparent;
+            transition: background-color 1s ease;
+        }
+
+        .chatlog__message-container--highlighted {
+            background-color: rgba(114, 137, 218, 0.2);
+        }
+
+        .chatlog__message-container--pinned {
+            background-color: rgba(249, 168, 37, 0.05);
+        }
+
+        .chatlog__message {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            padding: 0.15rem 0;
+            direction: ltr;
+            unicode-bidi: bidi-override;
+        }
+
+        .chatlog__message:hover {
+            background-color: #32353b;
+        }
+
+        .chatlog__message:hover .chatlog__short-timestamp {
+            display: block;
+        }
+
+        .chatlog__message-aside {
+            grid-column: 1;
+            width: 72px;
+            padding: 0.15rem 0.15rem 0 0.15rem;
+            text-align: center;
+        }
+
+        .chatlog__reference-symbol {
+            height: 10px;
+            margin: 6px 4px 4px 36px;
+            border-left: 2px solid #4f545c;
+            border-top: 2px solid #4f545c;
+            border-radius: 8px 0 0 0;
+        }
+
+        .chatlog__avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .chatlog__short-timestamp {
+            display: none;
+            color: #a3a6aa;
+            font-size: 0.75rem;
+            font-weight: 500;
+            direction: ltr;
+            unicode-bidi: bidi-override;
+        }
+
+        .chatlog__message-primary {
+            grid-column: 2;
+            min-width: 0;
+        }
+
+        .chatlog__reference {
+            display: flex;
+            margin-bottom: 0.15rem;
+            align-items: center;
+            color: #b5b6b8;
+            font-size: 0.875rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .chatlog__reference-avatar {
+            width: 16px;
+            height: 16px;
+            margin-right: 0.25rem;
+            border-radius: 50%;
+        }
+
+        .chatlog__reference-author {
+            margin-right: 0.3rem;
+            font-weight: 600;
+        }
+
+        .chatlog__reference-content {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .chatlog__reference-link {
+            cursor: pointer;
+        }
+
+        .chatlog__reference-link * {
+            display: inline;
+            pointer-events: none;
+        }
+
+        .chatlog__reference-link .hljs {
+            display: inline;
+        }
+
+        .chatlog__reference-link:hover {
+            color: #ffffff;
+        }
+
+        .chatlog__reference-link:hover *:not(.chatlog__markdown-spoiler) {
+            color: inherit;
+        }
+
+        .chatlog__reference-edited-timestamp {
+            margin-left: 0.25rem;
+            color: #a3a6aa;
+            font-size: 0.75rem;
+            font-weight: 500;
+            direction: ltr;
+            unicode-bidi: bidi-override;
+        }
+
+        .chatlog__header {
+            margin-bottom: 0.1rem;
+        }
+
+        .chatlog__author {
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        .chatlog__bot-label {
+            position: relative;
+            top: -0.1rem;
+            margin-left: 0.3rem;
+            padding: 0.05rem 0.3rem;
+            border-radius: 3px;
+            background-color: #5865F2;
+            color: #ffffff;
+            font-size: 0.625rem;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .chatlog__timestamp {
+            margin-left: 0.3rem;
+            color: #a3a6aa;
+            font-size: 0.75rem;
+            font-weight: 500;
+            direction: ltr;
+            unicode-bidi: bidi-override;
+        }
+
+        .chatlog__content {
+            padding-right: 1rem;
+            font-size: 0.95rem;
+            word-wrap: break-word;
+        }
+
+        .chatlog__edited-timestamp {
+            margin-left: 0.15rem;
+            color: #a3a6aa;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .chatlog__attachment {
+            position: relative;
+            width: fit-content;
+            margin-top: 0.3rem;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .chatlog__attachment--hidden {
+            cursor: pointer;
+            box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+        }
+
+        .chatlog__attachment--hidden * {
+            pointer-events: none;
+        }
+
+        .chatlog__attachment-spoiler-caption {
+            display: none;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            z-index: 999;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.9);
+            color: #dcddde;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.05rem;
+        }
+
+        .chatlog__attachment--hidden .chatlog__attachment-spoiler-caption {
+            display: block;
+        }
+
+        .chatlog__attachment--hidden:hover .chatlog__attachment-spoiler-caption {
+            color: #fff;
+        }
+
+        .chatlog__attachment-media {
+            max-width: 45vw;
+            max-height: 500px;
+            vertical-align: top;
+            border-radius: 3px;
+        }
+
+        .chatlog__attachment--hidden .chatlog__attachment-media {
+            filter: blur(44px);
+        }
+
+        .chatlog__attachment-generic {
+            max-width: 520px;
+            width: 100%;
+            height: 40px;
+            padding: 10px;
+            border: 1px solid #292b2f;
+            border-radius: 3px;
+            background-color: #2f3136;
+            overflow: hidden;
+        }
+
+        .chatlog__attachment--hidden .chatlog__attachment-generic {
+            filter: blur(44px);
+        }
+
+        .chatlog__attachment-generic-icon {
+            float: left;
+            width: 30px;
+            height: 100%;
+            margin-right: 10px;
+        }
+
+        .chatlog__attachment-generic-size {
+            color: #72767d;
+            font-size: 12px;
+        }
+
+        .chatlog__attachment-generic-name {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .chatlog__embed {
+            display: flex;
+            margin-top: 0.3rem;
+            max-width: 520px;
+        }
+
+        .chatlog__embed-color-pill {
+            flex-shrink: 0;
+            width: 0.25rem;
+            border-top-left-radius: 3px;
+            border-bottom-left-radius: 3px;
+        }
+
+        .chatlog__embed-color-pill--default {
+            background-color: #202225;
+        }
+
+        .chatlog__embed-content-container {
+            display: flex;
+            flex-direction: column;
+            padding: 0.5rem 0.6rem;
+            border: 1px solid rgba(46, 48, 54, 0.6);
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
+            background-color: rgba(46, 48, 54, 0.3);
+        }
+
+        .chatlog__embed-content {
+            display: flex;
+            width: 100%;
+        }
+
+        .chatlog__embed-text {
+            flex: 1;
+        }
+
+        .chatlog__embed-author-container {
+            display: flex;
+            margin-bottom: 0.5rem;
+            align-items: center;
+        }
+
+        .chatlog__embed-author-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 0.5rem;
+            border-radius: 50%;
+        }
+
+        .chatlog__embed-author {
+            color: #ffffff;
+            font-size: 0.875rem;
+            font-weight: 600;
+            direction: ltr;
+            unicode-bidi: bidi-override;
+        }
+
+        .chatlog__embed-author-link {
+            color: #ffffff;
+        }
+
+        .chatlog__embed-title {
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .chatlog__embed-description {
+            color: #dcddde;
+            font-weight: 500;
+            font-size: 0.85rem;
+        }
+
+        .chatlog__embed-fields {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0 0.5rem;
+        }
+
+        .chatlog__embed-field {
+            flex: 0;
+            min-width: 100%;
+            max-width: 506px;
+            padding-top: 0.6rem;
+            font-size: 0.875rem;
+        }
+
+        .chatlog__embed-field--inline {
+            flex: 1;
+            flex-basis: auto;
+            min-width: 50px;
+        }
+
+        .chatlog__embed-field-name {
+            margin-bottom: 0.2rem;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .chatlog__embed-field-value {
+            color: #dcddde;
+            font-weight: 500;
+        }
+
+        .chatlog__embed-thumbnail {
+            flex: 0;
+            max-width: 80px;
+            max-height: 80px;
+            margin-left: 1.2rem;
+            border-radius: 3px;
+        }
+
+        .chatlog__embed-image-container {
+            margin-top: 0.6rem;
+        }
+
+        .chatlog__embed-image {
+            max-width: 500px;
+            max-height: 400px;
+            border-radius: 3px;
+        }
+
+        .chatlog__embed-footer {
+            margin-top: 0.6rem;
+            color: #dcddde;
+        }
+
+        .chatlog__embed-footer-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 0.2rem;
+            border-radius: 50%;
+            vertical-align: middle;
+        }
+
+        .chatlog__embed-footer-text {
+            vertical-align: middle;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .chatlog__embed-plainimage {
+            max-width: 45vw;
+            max-height: 500px;
+            vertical-align: top;
+            border-radius: 3px;
+        }
+
+        .chatlog__embed-spotify {
+            border: 0;
+        }
+
+        .chatlog__embed-youtube-container {
+            margin-top: 0.6rem;
+        }
+
+        .chatlog__embed-youtube {
+            border: 0;
+            border-radius: 3px;
+        }
+
+        .chatlog__sticker {
+            width: 180px;
+            height: 180px;
+        }
+
+        .chatlog__sticker--media {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .chatlog__reactions {
+            display: flex;
+        }
+
+        .chatlog__reaction {
+            display: flex;
+            margin: 0.35rem 0.1rem 0.1rem 0;
+            padding: 0.125rem 0.375rem;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            background-color: #2f3136;
+            align-items: center;
+        }
+
+        .chatlog__reaction:hover {
+            border: 1px solid hsla(0,0%,100%,.2);
+            background-color: transparent;
+        }
+
+        .chatlog__reaction-count {
+            min-width: 9px;
+            margin-left: 0.35rem;
+            color: #b9bbbe;
+            font-size: 0.875rem;
+        }
+
+        .chatlog__reaction:hover .chatlog__reaction-count {
+            color: #dcddde;
+        }
+
+        .chatlog__markdown {
+            max-width: 100%;
+            line-height: 1.3;
+            overflow-wrap: break-word;
+        }
+
+        .chatlog__markdown-preserve {
+            white-space: pre-wrap;
+        }
+
+        .chatlog__markdown-spoiler {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+        }
+
+        .chatlog__markdown-spoiler--hidden {
+            cursor: pointer;
+            background-color: #202225;
+            color: rgba(0, 0, 0, 0);
+        }
+
+        .chatlog__markdown-spoiler--hidden:hover {
+            background-color: rgba(32, 34, 37, 0.8);
+        }
+
+        .chatlog__markdown-spoiler--hidden::selection {
+            color: rgba(0, 0, 0, 0);
+        }
+
+        .chatlog__markdown-quote {
+            display: flex;
+            margin: 0.05rem 0;
+        }
+
+        .chatlog__markdown-quote-border {
+            margin-right: 0.5rem;
+            border: 2px solid #4f545c;
+            border-radius: 3px;
+        }
+
+        .chatlog__markdown-pre {
+            background-color: #2f3136;
+            font-family: "Consolas", "Courier New", Courier, monospace;
+        }
+
+        .chatlog__markdown-pre--multiline {
+            margin-top: 0.25rem;
+            padding: 0.5rem;
+            border: 2px solid #282b30;
+            border-radius: 5px;
+            color: #b9bbbe;
+        }
+
+        .chatlog__markdown-pre--multiline.hljs {
+            background-color: inherit;
+            color: inherit;
+        }
+
+        .chatlog__markdown-pre--inline {
+            padding: 2px;
+            border-radius: 3px;
+            font-size: 0.85rem;
+        }
+
+        .chatlog__markdown-mention {
+            border-radius: 3px;
+            padding: 0 2px;
+            background-color: rgba(88, 101, 242, .3);
+            color: #dee0fc;
+            font-weight: 500;
+        }
+
+        .chatlog__markdown-mention:hover {
+            background-color: #5865f2;
+            color: #ffffff
+        }
+
+        .chatlog__markdown-timestamp {
+            border-radius: 3px;
+            padding: 0 2px;
+            color: #a3a6aa;
+        }
+
+        .chatlog__emoji {
+            width: 1.325rem;
+            height: 1.325rem;
+            margin: 0 0.06rem;
+            vertical-align: -0.4rem;
+        }
+
+        .chatlog__emoji--small {
+            width: 1rem;
+            height: 1rem;
+        }
+
+        .chatlog__emoji--large {
+            width: 2.8rem;
+            height: 2.8rem;
+        }
+
+        .postamble {
+            padding: 1.25rem;
+        }
+
+        .postamble__entry {
+            color: #ffffff;
+        }
+    </style>
+
+    <link rel="stylesheet" href="NA%20-%20%E6%96%87%E5%AD%97%E9%A0%BB%E9%81%93%20-%20820-%E5%BE%8C%E6%97%A5%E8%AB%87%20%5B1095088152793841744%5D.html_Files/solarized-dark.min-BA98F.css">
+    <script src="NA%20-%20%E6%96%87%E5%AD%97%E9%A0%BB%E9%81%93%20-%20820-%E5%BE%8C%E6%97%A5%E8%AB%87%20%5B1095088152793841744%5D.html_Files/highlight.min-D8D27.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.chatlog__markdown-pre--multiline').forEach(e => hljs.highlightBlock(e));
+        });
+    </script>
+
+    <script src="NA%20-%20%E6%96%87%E5%AD%97%E9%A0%BB%E9%81%93%20-%20820-%E5%BE%8C%E6%97%A5%E8%AB%87%20%5B1095088152793841744%5D.html_Files/lottie.min-99657.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.chatlog__sticker--media[data-source]').forEach(e => {
+                const imageDataUrl = e.getAttribute('data-source');
+
+                const anim = lottie.loadAnimation({
+                  container: e,
+                  renderer: 'svg',
+                  loop: true,
+                  autoplay: true,
+                  path: imageDataUrl
+                });
+
+                anim.addEventListener('data_failed', () =>
+                    e.innerHTML = '<strong>[Sticker cannot be rendered]</strong>'
+                );
+            });
+        });
+    </script>
+
+    <script>
+        function scrollToMessage(event, id) {
+            var element = document.getElementById('chatlog__message-container-' + id);
+            if (!element)
+                return;
+
+            event.preventDefault();
+            element.classList.add('chatlog__message-container--highlighted');
+
+            window.scrollTo({
+                top: element.getBoundingClientRect().top - document.body.getBoundingClientRect().top - (window.innerHeight / 2),
+                behavior: 'smooth'
+            });
+
+            window.setTimeout(function() {
+                element.classList.remove('chatlog__message-container--highlighted');
+            }, 2000);
+        }
+
+        function showSpoiler(event, element) {
+            if (!element)
+                return;
+
+            if (element.classList.contains('chatlog__attachment--hidden')) {
+                event.preventDefault();
+                element.classList.remove('chatlog__attachment--hidden');
+            }
+
+            if (element.classList.contains('chatlog__markdown-spoiler--hidden')) {
+                event.preventDefault();
+                element.classList.remove('chatlog__markdown-spoiler--hidden');
+            }
+        }
+    </script>
+
+    <svg style="display: none">
+        <symbol id="attachment-icon" viewBox="0 0 720 960">
+            <path fill="#f4f5fb" d="M50,935a25,25,0,0,1-25-25V50A25,25,0,0,1,50,25H519.6L695,201.32V910a25,25,0,0,1-25,25Z"/>
+            <path fill="#7789c4" d="M509.21,50,670,211.63V910H50V50H509.21M530,0H50A50,50,0,0,0,0,50V910a50,50,0,0,0,50,50H670a50,50,0,0,0,50-50h0V191Z"/>
+            <path fill="#f4f5fb" d="M530,215a25,25,0,0,1-25-25V50a25,25,0,0,1,16.23-23.41L693.41,198.77A25,25,0,0,1,670,215Z"/>
+            <path fill="#7789c4" d="M530,70.71,649.29,190H530V70.71M530,0a50,50,0,0,0-50,50V190a50,50,0,0,0,50,50H670a50,50,0,0,0,50-50Z"/>
+        </symbol>
+    </svg>
+</head>
+<body>
+
+<div class="preamble">
+    <div class="preamble__guild-icon-container">
+        <img class="preamble__guild-icon" src="NA%20-%20%E6%96%87%E5%AD%97%E9%A0%BB%E9%81%93%20-%20820-%E5%BE%8C%E6%97%A5%E8%AB%87%20%5B1095088152793841744%5D.html_Files/0-EB806.png" alt="Guild icon" loading="lazy">
+    </div>
+    <div class="preamble__entries-container">
+        <div class="preamble__entry">NA</div>
+        <div class="preamble__entry">文字頻道 / 820-後日談</div>
+
+
+    </div>
+</div>
+
+<div class="chatlog">
+
+
+
+<div class="chatlog__message-group">
+    <div id="chatlog__message-container-1095089370702299157" class="chatlog__message-container " data-message-id="1095089370702299157">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <img class="chatlog__avatar" src="NA%20-%20%E6%96%87%E5%AD%97%E9%A0%BB%E9%81%93%20-%20820-%E5%BE%8C%E6%97%A5%E8%AB%87%20%5B1095088152793841744%5D.html_Files/583a9df6f1489eb5739def37bb8a4a45-F92F0.png" alt="Avatar" loading="lazy">
+            </div>
+
+            <div class="chatlog__message-primary">
+                    <div class="chatlog__header">
+                        <span class="chatlog__author" style="" title="NA#5705" data-user-id="1093302159279411251">御前 莫迦</span>
+
+
+                        <span class="chatlog__timestamp">11-Apr-23 04:54 AM</span>
+                    </div>
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve"><strong>／■■日記／</strong>
+
+回家後，莫迦一如既往的把水松奈帶回自己的房間。途經走廊時碰上在正裝扮好準備上班的父母，兩人不禁以恐懼的目光投射在瞼無血色的莫迦以及膚顏如雪般蒼白水松奈身上。
+
+尖叫、咒罵等等聲音如雷貫耳。
+好吵，但是都無所謂了。
+
+——畢竟水松奈回來了啊。
+即使是以自己最不希望的狀態。
+
+莫迦垂下眼眸，將懷中的水松奈抱得更緊，順道讓她的臉可以隱藏在自己的胸口前。
+即使她知道妹妹並不會在意他人的看法，只是能觸碰到的實感使她無法再次放開，或許這就是她的小小私心。
+
+回到以淺色裝潢的房間後，她先把水松奈小心翼翼地放到柔軟的雙人床上，隨後便走到靠床邊的大衣櫃中拿出兩套輕飄飄的裙裝睡衣。
+
+抱著衣服的她轉過頭，對水松奈臉帶微笑、柔和地說道：「水松奈要先去洗澡嗎？啊……爸爸媽媽的話沒關係哦，已經解決好了。」
+
+淺銀色的雙目中沒有什麼光澤，不過她臉上的笑容仍然如初般的溫柔又帶著憐愛。
+時間並不多了，痛苦也已經夠了。
+
+——在時日無情的流逝中，我要把當初沒法傾訴的愛意全都告訴她。//</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+    <div id="chatlog__message-container-1095090359752728646" class="chatlog__message-container " data-message-id="1095090359752728646">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <img class="chatlog__avatar" src="NA%20-%20%E6%96%87%E5%AD%97%E9%A0%BB%E9%81%93%20-%20820-%E5%BE%8C%E6%97%A5%E8%AB%87%20%5B1095088152793841744%5D.html_Files/3a2e43008ec3dfe3afe007d85023cc9c-D0BAB.png" alt="Avatar" loading="lazy">
+            </div>
+
+            <div class="chatlog__message-primary">
+                    <div class="chatlog__header">
+                        <span class="chatlog__author" style="" title="宝鐘の一味#1005" data-user-id="679431188745551872">御前 水松奈</span>
+
+
+                        <span class="chatlog__timestamp">11-Apr-23 04:58 AM</span>
+                    </div>
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve"><strong>／■■日記／</strong>
+
+水松奈身上的傷口好像不管怎麼都沒辦法處理的樣子……
+也不能去找醫生幫忙……怎麼辦……
+
+就連抱著她，幫她用冷水沖洗也好，她的傷還是會痛啊……
+怎麼辦……吶，告訴我要怎樣才能讓她不再痛苦……
+誰都好，拜託了。
+
+…………
+
+今天是晴朗的一天，天色很好，或許散散步也不錯。
+如是想著，莫迦為坐輪椅上的水松奈打扮好後，開始推著她出旅。
+
+陽光映在兩人的身上，雖然水松奈頭上蓋著淺色的遮陽帽，但那暖陽多少為她那純白的皮膚多加一份暖色和溫度。
+微妙的，看來有種仍活著的感覺，就如以前雙雙在路上閒逛的她一般。
+
+——雖然她的確活著。
+
+或許是回憶起以前的事，莫迦有些好奇的向水松奈問道：「現在這種沒人管制的時間，水松奈喜歡嗎？」
+
+見對方似乎愣著並沒有回應，她輕聲的接著說道：「我的話很喜歡呢……終於可以實現了呢，兩個人的冥王星。」
+
+微風掠過了她的緋紅的臉，銀白的髮絲也輕輕的飄動，少女的裙擺亦隨風微揚。
+一切都仿如正在宣告著她律動著的心跳，雀躍不已的心情。
+
+坐在輪椅上的粉髮少女拉著帽子，把頭轉向身後莞爾而笑的她，欣然的跟著歡笑：「喜歡啊，」
+
+「只是為什麼是冥王星？」//</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+    <div id="chatlog__message-container-1095090445534630038" class="chatlog__message-container " data-message-id="1095090445534630038">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <img class="chatlog__avatar" src="NA%20-%20%E6%96%87%E5%AD%97%E9%A0%BB%E9%81%93%20-%20820-%E5%BE%8C%E6%97%A5%E8%AB%87%20%5B1095088152793841744%5D.html_Files/583a9df6f1489eb5739def37bb8a4a45-F92F0.png" alt="Avatar" loading="lazy">
+            </div>
+
+            <div class="chatlog__message-primary">
+                    <div class="chatlog__header">
+                        <span class="chatlog__author" style="" title="NA#5705" data-user-id="1093302159279411251">御前 莫迦</span>
+
+
+                        <span class="chatlog__timestamp">11-Apr-23 04:58 AM</span>
+                    </div>
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve"><strong>／■■日■／</strong>
+
+水松奈的問題我沒法回答。
+
+復活的代價是失去記憶嗎。
+
+那麼總有一天，連我也會忘記吧。
+對我的愛也是——
+
+或許那樣是最好的。
+沒錯，對她來說會是最好的。
+
+只是，為什麼會有種說不出來的悲哀。
+即使以刀刺進皮膚也不會感覺到疼痛，但始終沒辦法平靜下來。
+
+啊，她回來房間了。
+
+……
+
+「水松奈要休息了嗎？」莫迦把水松奈小小的身軀抱回床上，一如既往的關掉小夜燈，為兩人拉起了柔軟的棉被。
+
+「祝妳有個好夢哦。」希望妳的夢中還記得我。
+宛如祝福的話語伴隨著輕吻落在對方冰冷的額上，莫迦閉上了眼睛，等待著早晨的來臨。//</span>
+
+                            <span class="chatlog__edited-timestamp" title="11-Apr-23 04:58 AM">(edited)</span>
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+    <div id="chatlog__message-container-1095090567605661696" class="chatlog__message-container " data-message-id="1095090567605661696">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <img class="chatlog__avatar" src="NA%20-%20%E6%96%87%E5%AD%97%E9%A0%BB%E9%81%93%20-%20820-%E5%BE%8C%E6%97%A5%E8%AB%87%20%5B1095088152793841744%5D.html_Files/3a2e43008ec3dfe3afe007d85023cc9c-D0BAB.png" alt="Avatar" loading="lazy">
+            </div>
+
+            <div class="chatlog__message-primary">
+                    <div class="chatlog__header">
+                        <span class="chatlog__author" style="" title="宝鐘の一味#1005" data-user-id="679431188745551872">御前 水松奈</span>
+
+
+                        <span class="chatlog__timestamp">11-Apr-23 04:58 AM</span>
+                    </div>
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">我回來了，雖然大概只有姊姊會對我說歡迎回來吧。
+看到那臉上帶著驚恐的父母，我並不怨恨他們吧，畢竟他們生下了我的愛人。他們有罪，但我不是劊子手，而且要不是他們，我們的羈絆也不會如此的緊緊相纏著。
+我對他們說了句謝謝。
+該怎麼說呢，有點意外，死神並沒有帶走我。
+我應該要想到的，我那個時候太情緒化了。
+
+<strong>死神。</strong>
+<div class="chatlog__markdown-pre chatlog__markdown-pre--multiline nohighlight">（後面一長串用草寫寫著）
+死亡將不分男女老少，王冠在他的白馬面前毫無用武之地，在那馬蹄聲所聞之處，生靈塗炭、光芒不存，是的，但那旗幟上卻是美麗純潔而不朽的薔薇，所以新生得以伴隨著死亡而升起。冥河，流水般無情，卻是生命的開湍。看阿，旭日將要升起，那是象徵生命的永恆。
+我怎麼就忘了呢，忘了死亡絕非是終點，而是轉變。
+那這麼說，寶劍六跟命運之輪肯定也有它的解釋，大概有點頭緒了，明天再寫下來吧。</div>姐姐讓我去洗澡了，那我肯定要跟姐姐一起洗的吧。
+爸爸媽媽的話沒關係喔，這種話我倒是希望在死前就能聽到呢。不過沒關係，你來找我了呢，所以我原諒你了。
+
+死不掉了。我挺開心的，這麼說好像很奇怪，但是我成功了，看著姐姐的表情我就知道她是不可能把我忘掉的。我好開心。似乎身上的痛沒甚麼所謂了，她愛著我，就好像我愛著她。
+
+我的時間還很長，足夠我享受現在的痛苦。
+痛的程度：過去的病痛＜現在的痛＜我不在你身邊＜我被你遺忘了
+<strong>不可以被忘記呢。</strong>
+（用紅筆圈了好多次）
+
+——這疼痛最終將逼我至癲狂，但我早已瘋狂，我為、也只為你而瘋，莫迦。</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+    <div id="chatlog__message-container-1095090659687407656" class="chatlog__message-container " data-message-id="1095090659687407656">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <img class="chatlog__avatar" src="NA%20-%20%E6%96%87%E5%AD%97%E9%A0%BB%E9%81%93%20-%20820-%E5%BE%8C%E6%97%A5%E8%AB%87%20%5B1095088152793841744%5D.html_Files/583a9df6f1489eb5739def37bb8a4a45-F92F0.png" alt="Avatar" loading="lazy">
+            </div>
+
+            <div class="chatlog__message-primary">
+                    <div class="chatlog__header">
+                        <span class="chatlog__author" style="" title="NA#5705" data-user-id="1093302159279411251">御前 莫迦</span>
+
+
+                        <span class="chatlog__timestamp">11-Apr-23 04:59 AM</span>
+                    </div>
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">今天是個晴朗的日子，姊姊推著我出門散步。
+
+陽光透過樹葉零碎的散落在姊姊白色的髮絲上，她好美，不愧是姐姐，不愧是我的愛人，不過輪椅真是不方便，看個姐姐的美顏還要抬頭，不過真是挺悠哉的。新的身體感覺不太到日曬的溫度，但暖意卻從心底湧上來。
+
+冥王星，姐姐說了令人在意的話。如果可以兩個人去冥王星上聽上去也是不錯的。我當然很喜歡，應該說，如果在你身旁，不管是哪裡我都喜歡。
+
+<strong>寶劍六。</strong>
+<div class="chatlog__markdown-pre chatlog__markdown-pre--multiline nohighlight">彼岸，六把寶劍，一個船夫正再渡兩人過岸，披著斗篷的她，十分的孤獨卻又隱藏著自己。船相當的緩慢，會是場漫長的等待，沒入船身的寶劍是危險，卻無法被拔除。固然被苦惱著，但必須協帶著煩惱前行。也是，我並沒有要解決問題，只是想著把問題帶到未來。
+緩慢的撐著船阿，後方的船夫，帶我去向彼岸，固始你看不見我的身影，但我在這裡，我就在此處。背負著沉重的，向著那一邊出發，撐竿的人，在水面泛起漣漪。不知道你有沒有看見，頭上那片萬里晴空。</div>
+明天就是最後的命運之輪了，那次的占卜不僅僅在告訴我該如何行動，連後續的故事都告訴我了嗎。
+
+姐姐說了令人在意的話，但姊姊不會莫名其妙的跑出一句冥王星，那肯定是我之前所做的某個約定吧，或許活著的代價是遺忘。但願這份心情不會消失。
+<div class="chatlog__markdown-pre chatlog__markdown-pre--multiline nohighlight">如果真的忘了姊姊，她會不會拋下我呢？心中沒有她的我應該是不被需要的吧。</div>
+如果我會遺忘，那麼就再一次重新記起就好了。
+姊姊，莫迦，我的愛人
+在自己的手臂上寫了備忘錄。
+
+不過就算我忘了她，她也肯定忘不了我的，我真是幸福。
+
+——如果活著的代價是遺忘，那麼就讓我把你寫在手心，緊緊握著。</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+    <div id="chatlog__message-container-1095090720601280582" class="chatlog__message-container " data-message-id="1095090720601280582">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <img class="chatlog__avatar" src="NA%20-%20%E6%96%87%E5%AD%97%E9%A0%BB%E9%81%93%20-%20820-%E5%BE%8C%E6%97%A5%E8%AB%87%20%5B1095088152793841744%5D.html_Files/3a2e43008ec3dfe3afe007d85023cc9c-D0BAB.png" alt="Avatar" loading="lazy">
+            </div>
+
+            <div class="chatlog__message-primary">
+                    <div class="chatlog__header">
+                        <span class="chatlog__author" style="" title="宝鐘の一味#1005" data-user-id="679431188745551872">御前 水松奈</span>
+
+
+                        <span class="chatlog__timestamp">11-Apr-23 04:59 AM</span>
+                    </div>
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve"><strong>／■■■記／</strong>
+
+不知道是誰曾經對我問過。
+
+「妳認為什麼才是死亡呢？」
+
+我不曾認真的面對過這個問題……因為我擁有著幸福，甜美的糕點香氣也使我不想多想。
+畢竟死亡就只是死亡而已啊？對我來說也好，水松奈來說也好，都太早了。
+
+但被遺忘的點滴從手中流走的感覺，會不會也是死亡的象徵呢……
+
+如是想著，不管是信仰也好，安心也罷，我從水松奈的卡牌中隨手挑了一張。
+卡牌的意義……嗯，還是像如常般，先準備她可能會喜歡的糖果吧。
+
+…………
+
+注意到水松奈手上的備忘錄愈來愈多，莫迦的精神也日益脆弱。
+
+果然，復活不是沒有代價的。
+什麼時候會輪到自己呢。
+
+有如俄羅斯輪盤般的記憶，在扣下扳機的那剎就決定了命運。
+
+在幫水松奈換裝時，直至見到「姊姊，莫迦，我的愛人」的短句，莫迦始終還是愣住了。
+她想無視心裡的不安和恐懼，但那卻是關及到自己最為重要的事。
+她不得不去面對。
+
+即使她再害怕。
+
+把對方的洋裝整理好後，她只是在梳妝鏡前半彎下身，輕輕的在水松奈耳際以對方也能安心的嗓音說道：「不用再努力也可以了哦，有些事即使水松奈忘了，我也會記得的。」
+
+她從後以雙手滑進對方的粉色髮絲中，捂著對方的耳朵，對著鏡面張合著嘴唇無聲的道：「即使哪天我也消失了，也不等於約定的死亡。」
+
+——約定是不死的，儘然被遺忘對莫迦來說跟死亡無異。
+
+不過只容得下兩人的冥王星總會等待著迷失的妳。
+因為不管如何我都不會把妳丟下的啊，路旁的星星們也會為妳引路的吧。
+
+「吶，一起回家吧？水松奈。」
+或許再來一次最後的雙人逃避行吧。//</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+    <div id="chatlog__message-container-1095090765744578640" class="chatlog__message-container " data-message-id="1095090765744578640">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <img class="chatlog__avatar" src="NA%20-%20%E6%96%87%E5%AD%97%E9%A0%BB%E9%81%93%20-%20820-%E5%BE%8C%E6%97%A5%E8%AB%87%20%5B1095088152793841744%5D.html_Files/583a9df6f1489eb5739def37bb8a4a45-F92F0.png" alt="Avatar" loading="lazy">
+            </div>
+
+            <div class="chatlog__message-primary">
+                    <div class="chatlog__header">
+                        <span class="chatlog__author" style="" title="NA#5705" data-user-id="1093302159279411251">御前 莫迦</span>
+
+
+                        <span class="chatlog__timestamp">11-Apr-23 04:59 AM</span>
+                    </div>
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">不會因為這點事就忘記的。
+
+-
+牆上的鐘滴答的走著，望著另一頭的窗外灑下月光。
+
+遠方的星辰交相輝映，祝你有個好夢，儘管疲憊的身軀無法入眠，但祝你有個好夢。
+
+水松奈閉上眼睛，任由海水冰冷一般的吞噬著他，浪潮退去之時，有甚麼重要的事物也跟著褪色。許是前些日子的甜食，又或者眼前的擁抱。
+
+不自覺的，水松奈加大了擁抱的力度，不想失去，不想遺忘；不想被失去，不想被遺忘。
+
+-
+盛夏，
+鷗鳥高懸，烈日輕歌。
+孩童走獸飛鳥自然熱鬧，可那都與你和我無關。
+
+記不起的東西，越來越多了。難不成你真不屬於我？為何時間在將你從我的生命中奪去。
+時光逼催著我們，而生活卻一如既往、面目庸常，疲憊的依舊疲憊，憂傷的仍舊憂傷。
+但是我懂，我們的約定不會消亡。
+
+最近在小王子裡面讀到：
+「因為是心甘情願地沉溺，即使死亡也無須被拯救。」
+或許因為心甘情願地沉溺，所以活在痛苦中我也能一笑置之。
+<strong>命運之輪。</strong>
+<div class="chatlog__markdown-pre chatlog__markdown-pre--multiline nohighlight">無關是非與對錯，也無關飛禽走獸。
+命運的方向指著空無一人的藍天，斯芬克斯握著寶劍，阿努比斯再另一側。一側下降，另一側就上升。命運，由不得人。就好比上帝扔起了骰子。
+也許抵抗只是徒勞無功，但上帝的骰子不會永遠是1，或許哪個時候就在該成功的時候摔上一跤。
+如果這是代表著回復原狀那麼也太可笑，但如果不是，那我又該相信甚麼？
+命運之輪的舞台上，所有人將被輾過，留下他要你留下的模樣。</div>被上帝骰下的骰子決定了命運的我。
+開始有點不安，會不會投入的全力只會換來心碎，在姐姐的眼眸裡似乎瞥見了最後兩敗俱傷的神情。
+
+別想那麼多了，有那份心思不如來期待之後的約會。
+跟姐姐久違的水族館約會，在昏暗的燈光下親吻……
+最後我們會一起回家的。
+
+「吶，一起回家吧？水松奈。」姐姐這麼對我說。
+
+「好的，<strong>我所愛著的姐姐</strong>。」日記啊，我笑著這麼回答。
+
+今天的我依舊會在睡前寫上，姊姊，莫迦，我的愛人。
+
+——心之所向，可以使地獄變成天堂，天堂淪為地獄。</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+    <div id="chatlog__message-container-1095091009014214656" class="chatlog__message-container " data-message-id="1095091009014214656">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <img class="chatlog__avatar" src="NA%20-%20%E6%96%87%E5%AD%97%E9%A0%BB%E9%81%93%20-%20820-%E5%BE%8C%E6%97%A5%E8%AB%87%20%5B1095088152793841744%5D.html_Files/3a2e43008ec3dfe3afe007d85023cc9c-D0BAB.png" alt="Avatar" loading="lazy">
+            </div>
+
+            <div class="chatlog__message-primary">
+                    <div class="chatlog__header">
+                        <span class="chatlog__author" style="" title="宝鐘の一味#1005" data-user-id="679431188745551872">御前 水松奈</span>
+
+
+                        <span class="chatlog__timestamp">11-Apr-23 05:00 AM</span>
+                    </div>
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve">／■■■■／
+
+和水松奈一起去東京，就兩個人。
+以前悠遊並肩的二十四小時，現在能心貼心的三小時的；明明距離都如此的近啊。
+
+為了不再讓她感到悲傷，我跟她聊了很多關於將來的事。
+當然，我也，一一答應她了。
+
+無論如何我都一定會做到的嘛。
+因為我是她的姐姐嘛，也是最愛她那份任性的人嘛。
+
+在搖擺不定的車上，其實我一直在想，御前 莫迦對現在妳來說是誰……
+又或者是一個怎樣的概念呢。
+
+可是我不願去問，更不想去猜。
+終究只是個後知後覺的笨蛋的名字。
+
+這次就讓我也任性一回好嗎？親愛的。
+
+……
+
+來到水族館已經是中午了呢，幸好是平日，人流並不多。
+牽著她的手冰冰涼涼的，跟水槽一樣。
+
+希望沒有因為過度緊張而握痛她。
+
+在水旅館裡遊玩著的她看來更活潑了呢。
+微微亮光的水母真的好像閃耀著引路的星星呢，我們就這樣走在暗藍的星光水槽間，在如星球般的此處相吻著。
+
+或許旁邊的路人們會嘩然吧？
+不過這次的吻可是特別的哦——妳之後就會知道了。
+
+「會幸福的。相信我吧。」
+淡淡的薄荷味在唇齒間散開後，我紅著臉笑著對妳如此說道。
+
+可能是第一次給妳承諾吧，我還哭了呢，真丟臉……
+但妳始終陪著我，直至我再次展現出笑容。
+
+結果是好的話，那就算是好的吧。
+
+……
+
+晚上的街道上有著我們兩個的影子，不用再顧忌著他人目光能親暱地相愛著的感覺真好呢。
+
+我不知道有沒有把足夠的愛傳達給妳，即使說多少遍「我愛妳」，妳也不會明白我的心情吧。
+不要緊的，繁星總會為我們引路，就像台場那邊的大摩天輪。
+
+<strong>星星</strong>
+<div class="chatlog__markdown-pre chatlog__markdown-pre--multiline nohighlight">星星已經超越了戰車用強大意志力控制外在環境的階段，而保持純然的內在信心與寧靜。</div>
+
+或者就是今晚的終點了吧。
+
+引著妳一同坐上了以全透明玻璃包覆的包廂，共覽著眼下的如無際般的海景，妳為我覆述著水旅館中和共棲海洋生物的美。
+
+「可是水箱中容不下 52 Hz 吧？」不管是海也。
+我輕撫著妳的精心造型的髮絲，不忍笑道。
+
+夏天多少有些熱，但我不想讓風把妳身上跟我相同的淋浴乳香味吹散。
+在摩天輪升上頂端時，我凝視著妳的雙目，那只映出我一人的眼瞳。
+
+「我呢雖然是個非常懦弱的人，可是對於愛是很執著的哦。」
+
+<div class="chatlog__markdown-pre chatlog__markdown-pre--multiline nohighlight">星星出現於塔牌之後，處於牢籠般的塔中人被閃電所釋放，終於在星星中得到真正的自由。</div>
+
+「對不起呢水松奈，直到現在才跟妳說這句話。」
+
+<div class="chatlog__markdown-pre chatlog__markdown-pre--multiline nohighlight">星星的希望和樂觀通常是不現實的。星星牌雖然美好，但其出現時是很少指向現實情況的。星星牌與當事人的心理狀態更相關，它意味著當事人處在一種充滿希望、相信事情會有個積極結果的狀態下。</div>
+
+「謝謝妳讓我愛妳。」
+請在我所能及的地方等著我吧。
+
+我把頭貼近她，以顫抖著的手捂起她的眼。
+準備要貼在她唇前的嘴輕輕頌著如歌般的咒語。
+
+我是自私的膽小鬼，終究沒法把咒術諗完。
+
+十六分鐘的摩天輪旅程終於降下，時間卻比數天還要長。
+我牽著的水松奈的手輕輕的踏下透明階梯。
+
+我緊抓著她的手，沒多作停留的拉起她跑離了現場。
+街道上的吵雜聲傳進耳窩之中，但殘留在耳裡的只有「嗯！<strong>我也愛妳哦姐姐</strong>」。
+
+最後只能以接到父母的電話稍為支開她躲到能觀察著她的一角，捂著雙耳去否定這一切。
+
+現在的我一定哭得亂七八糟吧……
+就像因為害怕而難以入眠的我。
+
+幸好水松奈不會再看見了。//</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+    <div id="chatlog__message-container-1095091433448407173" class="chatlog__message-container " data-message-id="1095091433448407173">
+        <div class="chatlog__message">
+            <div class="chatlog__message-aside">
+                    <img class="chatlog__avatar" src="NA%20-%20%E6%96%87%E5%AD%97%E9%A0%BB%E9%81%93%20-%20820-%E5%BE%8C%E6%97%A5%E8%AB%87%20%5B1095088152793841744%5D.html_Files/583a9df6f1489eb5739def37bb8a4a45-F92F0.png" alt="Avatar" loading="lazy">
+            </div>
+
+            <div class="chatlog__message-primary">
+                    <div class="chatlog__header">
+                        <span class="chatlog__author" style="" title="NA#5705" data-user-id="1093302159279411251">御前 莫迦</span>
+
+
+                        <span class="chatlog__timestamp">11-Apr-23 05:02 AM</span>
+                    </div>
+
+                    <div class="chatlog__content chatlog__markdown">
+                        <span class="chatlog__markdown-preserve"><strong>早上八點二十分五十二秒，我死了。</strong>
+
+嚴格來說，還沒死，而且沒那麼容易死。
+我是個活死人、殭屍、屍體，隨便要怎麼說吧。
+
+我知道你很痛，但沒有關係喔，有你最愛的姐姐陪在你身旁，雖然已經遺忘過了幾次。
+
+<strong>妳認為什麼是死亡？</strong>
+我忘了我對誰問的，也忘了她究竟有沒有回答。
+
+但我現在大概懂了，因為過去的我已死，我弄丟了自己。
+冥王星的含義或許已經隨著之前的我凋零，但我們可以再一次賦予它意義，一層又一層的將那片只屬於我們兩人的世界給染上色彩。
+
+-
+明天的我，近來好嗎？如果不知道要做什麼，就去向姐姐許願吧，儘管沒有辦法把頻率對上，但至少做到讓她不再孤單。
+
+望向窗外，已然快入春，但那雪彷彿為了掩埋愛的死一樣，飄然落下。
+望向窗外，已然不知愛你，但你聽那海、那風、那星空，明顯你愛我。
+
+<div class="chatlog__markdown-pre chatlog__markdown-pre--multiline nohighlight">聞時看不見他，卻知道他寸步未離，始終都在，彷彿千年的時間裡，從未走開過。
+
+他說：“有我呢。”
+
+於是百無禁忌。</div>
+我不懂，但我還是哭了。
+
+所以我不懂，但我依然愛著。
+
+所以我欺騙著你，而你也瞭然於心。
+
+——脫口而出，妳是我的最愛。若要問我怎麼做到，那是因為我不知悔改。</span>
+
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>
+
+<div class="postamble">
+    <div class="postamble__entry">Exported 9 message(s)</div>
+</div>
+
+</body>
+
+</html>
